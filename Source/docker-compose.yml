@@ -1,0 +1,81 @@
+services:
+
+  db:
+    image: postgres:13.15
+    container_name: db
+    restart: always
+    volumes:
+      - ./db-desa:/var/lib/postgresql/data
+      - ./DataBase/authorization_schema.sql:/docker-entrypoint-initdb.d/authorization_schema.sql
+    environment:
+      POSTGRES_DB: 'architect-desa'
+      POSTGRES_USER: 'desarrollo'
+      POSTGRES_PASSWORD: 'Sistemas10#'
+    ports:
+      - '5432:5432'
+
+  registry-server:
+    container_name: registry-server
+    build:
+      context: ./Registry-Server/
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8761:8761"
+
+  config-server:
+    container_name: config-server
+    build:
+      context: ./Config-Server/
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - registry-server
+    environment:
+      GIT_TOKEN: token
+      GIT_URI: https://github.com/FernyNeg/Portal-Config.git
+      GIT_USER: FernyNeg
+      EUREKA_URL: http://registry-server:8761/eureka/
+    ports:
+      - "7777:7777"
+
+  portal-server:
+    container_name: portal-server
+    build:
+      context: ./Services/Portal-Server/Portal-Rest/
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - config-server
+      - db
+    environment:
+      EUREKA_URL: http://registry-server:8761/eureka/
+      CONFIG_SERVER: http://config-server:7777/
+
+  dashboard-server:
+    container_name: dashboard-server
+    build:
+      context: ./Services/Dashboard-Server/Dashboard-Rest/
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - config-server
+      - db
+    environment:
+      EUREKA_URL: http://registry-server:8761/eureka/
+      CONFIG_SERVER: http://config-server:7777/
+
+  gateway-server:
+    container_name: gateway-server
+    build:
+      context: ./Services/Gateway-Server/Gateway-Rest/
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - registry-server
+    environment:
+      EUREKA_URL: http://registry-server:8761/eureka/
+      CONFIG_SERVER: http://config-server:7777/
+      AUTH_URI: http://dashboard-server:3030/Dashboard-server/Auth/jwt
+    ports:
+      - '8080:8080'

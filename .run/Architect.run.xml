@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Architect" type="CompoundRunConfigurationType">
+    <toRun name="1-RegistryServer" type="SpringBootApplicationConfigurationType" />
+    <toRun name="2-ConfigServer" type="SpringBootApplicationConfigurationType" />
+    <toRun name="3-PortalServer" type="SpringBootApplicationConfigurationType" />
+    <toRun name="4-DashboardServer" type="SpringBootApplicationConfigurationType" />
+    <toRun name="5-GatewayServer" type="SpringBootApplicationConfigurationType" />
+    <method v="2" />
+  </configuration>
+</component>

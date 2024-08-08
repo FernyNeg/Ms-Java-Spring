@@ -1,0 +1,15 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="2-ConfigServer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <envs>
+      <env name="GIT_TOKEN" value="token" />
+      <env name="GIT_URI" value="https://github.com/FernyNeg/Portal-Config.git" />
+      <env name="GIT_USER" value="FernyNeg" />
+      <env name="EUREKA_URL" value="http://localhost:8761/eureka/" />
+    </envs>
+    <module name="Config-Server" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="architecture.template.vmm.ConfigServer" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

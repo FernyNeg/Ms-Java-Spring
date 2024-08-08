@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: registry-server
+  banner:
+    location: configs/banner.txt
+server:
+  port: 8761
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false

@@ -1,0 +1,14 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="3-PortalServer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" singleton="false">
+    <envs>
+      <env name="EUREKA_URL" value="http://localhost:8761/eureka/" />
+      <env name="CONFIG_SERVER" value="http://localhost:7777" />
+    </envs>
+    <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+    <module name="Portal-Rest" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="architecture.template.vmm.PortalServer" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

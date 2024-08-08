@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="5-GatewayServer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <envs>
+      <env name="EUREKA_URL" value="http://localhost:8761/eureka/" />
+      <env name="AUTH_URI" value="http://localhost:3030/Dashboard-Server/Auth/jwt" />
+    </envs>
+    <module name="Gateway-Rest" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="architecture.template.vmm.GatewayServer" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

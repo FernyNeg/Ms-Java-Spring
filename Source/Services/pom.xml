@@ -1,0 +1,27 @@
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>Services</artifactId>
+  <groupId>architecture.template.vmm</groupId>
+  <version>1.0</version>
+  <packaging>pom</packaging>
+  <name>Services</name>
+
+  <modules>
+    <module>Entity</module>
+    <module>Model</module>
+    <module>Common</module>
+    <module>External</module>
+    <module>Portal-Server</module>
+    <module>Dashboard-Server</module>
+    <module>Gateway-Server</module>
+  </modules>
+
+  <properties>
+    <spring.boot.version>3.2.1</spring.boot.version>
+  </properties>
+
+</project>

@@ -1,0 +1,14 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="4-DashboardServer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <envs>
+      <env name="CONFIG_SERVER" value="http://localhost:7777" />
+      <env name="EUREKA_URL" value="http://localhost:8761/eureka/" />
+    </envs>
+    <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+    <module name="Dashboard-Rest" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="architecture.template.vmm.DashboardServer" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

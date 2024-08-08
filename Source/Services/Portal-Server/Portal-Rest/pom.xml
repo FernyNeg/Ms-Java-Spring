@@ -1,0 +1,79 @@
+<project
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <artifactId>Portal-Server</artifactId>
+    <groupId>architecture.template.vmm</groupId>
+    <version>1.0</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <artifactId>Portal-Rest</artifactId>
+  <packaging>jar</packaging>
+  <name>Portal-Rest</name>
+
+  <dependencies>
+    <!-- Model -->
+    <dependency>
+      <groupId>architecture.template.vmm</groupId>
+      <artifactId>Entity</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <!-- Dto -->
+    <dependency>
+      <groupId>architecture.template.vmm</groupId>
+      <artifactId>Model</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <!-- Service -->
+    <dependency>
+      <groupId>architecture.template.vmm</groupId>
+      <artifactId>Portal-Service</artifactId>
+      <version>1.0</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>${project.artifactId}</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+            <configuration>
+              <mainClass>${start-class}</mainClass>
+              <layout>JAR</layout>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>3.1.0</version>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>src/main/resources/static</directory>
+              <includes>
+                <include>**</include>
+              </includes>
+              <excludes>
+                <exclude>error/**</exclude>
+                <exclude>admin/**</exclude>
+              </excludes>
+              <followSymlinks>false</followSymlinks>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

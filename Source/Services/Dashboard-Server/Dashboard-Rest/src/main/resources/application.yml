@@ -1,0 +1,51 @@
+server:
+  port: 3030
+  servlet:
+    application-display-name: Dashboard-Server
+    context-path: /Dashboard-Server
+spring:
+  application:
+    name: Dashboard-Server
+  profiles:
+#    default: prod
+    default: default
+  config:
+    import: "optional:configserver:${CONFIG_SERVER}"
+  datasource:
+    username: ${db.username}
+    hikari:
+      connection-timeout: ${db.connection-timeout}
+      maximum-pool-size: ${db.max-pool-size}
+    driver-class-name: org.postgresql.Driver
+    url: ${db.url}
+    password: ${db.password}
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: true
+    properties:
+      hibernate:
+        format_sql: true
+        default_schema: ${db.schema}
+  banner:
+    location: ./configs/banner.txt
+logging:
+  file:
+    path: /fernando/Logs/
+    name: Dashboard.log
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+eureka:
+  instance:
+    instance-id: "${spring.application.name}:${random.value}"
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL}

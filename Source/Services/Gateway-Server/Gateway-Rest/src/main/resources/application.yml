@@ -1,0 +1,16 @@
+server:
+  port: 8080
+  servlet:
+    application-display-name: Gateway-Server
+spring:
+  application:
+    name: Gateway-Server
+  profiles:
+    default: oauth2
+  banner:
+    location: ./configs/banner.txt
+eureka:
+  client:
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_URL}

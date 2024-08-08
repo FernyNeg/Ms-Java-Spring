@@ -1,0 +1,49 @@
+### Save new user
+POST http://localhost:8080/Dashboard-Server/User/SaveNewUser
+Content-Type: application/json
+
+{
+  "email": "lfernando.negron@gmail.com",
+  "username": "NEML990127HGRGRSO9",
+  "cellphone": "7671135924",
+  "password": "Sistemas10#",
+  "citizen": {
+    "names": "Luis Fernando",
+    "lastname1": "Negrón",
+    "lastname2": "Martínez",
+    "birthdate": "1999-01-27T00:00:00.000Z",
+    "curp": "NEML990127HGRGRSO9",
+    "rfc": "NEML990127LV0"
+  },
+  "notification": {
+    "phone": true,
+    "email": true,
+    "push": true,
+    "whatsapp": true
+  }
+}
+
+> {%
+  client.global.set("user_uuid", response.body);
+%}
+
+### Login
+POST http://localhost:8080/Dashboard-Server/Auth/login
+Content-Type: application/json
+
+{
+  "username": "lfernando.negron@gmail.com",
+  "password": "Sistemas10#"
+}
+
+> {%
+  client.global.set("auth_token", response.body.accessToken);
+%}
+
+### Get all users
+GET http://localhost:8080/Portal-Server/User
+Authorization: Bearer {{auth_token}}}
+
+### Get user by UUID
+GET http://localhost:8080/Portal-Server/User/Uuid/{{user_uuid}}
+Authorization: Bearer {{auth_token}}
